@@ -1,0 +1,87 @@
+2025-06-14 05:59:18,095 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-06-14 05:59:18,095 INFO: [33mPress CTRL+C to quit[0m
+2025-06-14 05:59:18,117 INFO:  * Restarting with watchdog (windowsapi)
+2025-06-14 05:59:19,812 WARNING:  * Debugger is active!
+2025-06-14 05:59:19,817 INFO:  * Debugger PIN: 847-420-897
+2025-06-14 05:59:41,485 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-06-14 05:59:41,485 INFO: [33mPress CTRL+C to quit[0m
+2025-06-14 05:59:41,509 INFO:  * Restarting with watchdog (windowsapi)
+2025-06-14 05:59:41,525 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-06-14 05:59:41,526 INFO: [33mPress CTRL+C to quit[0m
+2025-06-14 05:59:41,555 INFO:  * Restarting with watchdog (windowsapi)
+2025-06-14 05:59:43,394 WARNING:  * Debugger is active!
+2025-06-14 05:59:43,403 INFO:  * Debugger PIN: 847-420-897
+2025-06-14 05:59:43,422 WARNING:  * Debugger is active!
+2025-06-14 05:59:43,431 INFO:  * Debugger PIN: 847-420-897
+2025-06-14 06:01:07,029 INFO:  * Detected change in 'C:\\Users\\Madina\\PycharmProjects\\pythonProjectchatbot\\GBVHelperBot.py', reloading
+2025-06-14 06:01:07,030 INFO:  * Detected change in 'C:\\Users\\Madina\\PycharmProjects\\pythonProjectchatbot\\GBVHelperBot.py', reloading
+2025-06-14 06:01:07,692 INFO:  * Restarting with watchdog (windowsapi)
+2025-06-14 06:01:07,768 INFO:  * Restarting with watchdog (windowsapi)
+2025-06-14 06:12:23,529 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-06-14 06:12:23,529 INFO: [33mPress CTRL+C to quit[0m
+2025-06-14 06:12:23,553 INFO:  * Restarting with watchdog (windowsapi)
+2025-06-14 06:12:25,105 WARNING:  * Debugger is active!
+2025-06-14 06:12:25,110 INFO:  * Debugger PIN: 847-420-897
+2025-06-14 06:15:46,841 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-06-14 06:15:46,841 INFO: [33mPress CTRL+C to quit[0m
+2025-06-14 06:15:46,863 INFO:  * Restarting with watchdog (windowsapi)
+2025-06-14 06:15:46,863 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-06-14 06:15:46,863 INFO: [33mPress CTRL+C to quit[0m
+2025-06-14 06:15:46,885 INFO:  * Restarting with watchdog (windowsapi)
+2025-06-14 06:15:48,706 WARNING:  * Debugger is active!
+2025-06-14 06:15:48,714 INFO:  * Debugger PIN: 847-420-897
+2025-06-14 06:15:48,730 WARNING:  * Debugger is active!
+2025-06-14 06:15:48,738 INFO:  * Debugger PIN: 847-420-897
+2025-06-14 06:16:57,568 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-06-14 06:16:57,568 INFO: [33mPress CTRL+C to quit[0m
+2025-06-14 06:16:57,594 INFO:  * Restarting with watchdog (windowsapi)
+2025-06-14 06:16:59,248 WARNING:  * Debugger is active!
+2025-06-14 06:16:59,254 INFO:  * Debugger PIN: 847-420-897
+2025-06-14 06:20:35,361 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-06-14 06:20:35,361 INFO: [33mPress CTRL+C to quit[0m
+2025-06-14 06:20:35,382 INFO:  * Restarting with watchdog (windowsapi)
+2025-06-14 06:20:37,005 WARNING:  * Debugger is active!
+2025-06-14 06:20:37,011 INFO:  * Debugger PIN: 847-420-897
+2025-06-14 06:24:16,663 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-06-14 06:24:16,663 INFO: [33mPress CTRL+C to quit[0m
+2025-06-14 06:24:16,685 INFO:  * Restarting with watchdog (windowsapi)
+2025-06-14 06:24:18,371 WARNING:  * Debugger is active!
+2025-06-14 06:24:18,378 INFO:  * Debugger PIN: 847-420-897
+2025-06-14 06:24:25,504 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-06-14 06:24:25,504 INFO: [33mPress CTRL+C to quit[0m
+2025-06-14 06:24:25,527 INFO:  * Restarting with watchdog (windowsapi)
+2025-06-14 06:24:27,315 WARNING:  * Debugger is active!
+2025-06-14 06:24:27,321 INFO:  * Debugger PIN: 847-420-897
+2025-06-14 06:25:22,348 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-06-14 06:25:22,348 INFO: [33mPress CTRL+C to quit[0m
+2025-06-14 06:25:22,368 INFO:  * Restarting with watchdog (windowsapi)
+2025-06-14 06:25:24,094 WARNING:  * Debugger is active!
+2025-06-14 06:25:24,100 INFO:  * Debugger PIN: 847-420-897
+2025-06-14 06:28:14,771 INFO:  * Detected change in 'C:\\Users\\Madina\\PycharmProjects\\pythonProjectchatbot\\GBVHelperBot.py', reloading
+2025-06-14 06:28:14,772 INFO:  * Detected change in 'C:\\Users\\Madina\\PycharmProjects\\pythonProjectchatbot\\GBVHelperBot.py', reloading
+2025-06-14 06:28:14,774 INFO:  * Detected change in 'C:\\Users\\Madina\\PycharmProjects\\pythonProjectchatbot\\GBVHelperBot.py', reloading
+2025-06-14 06:28:15,129 INFO:  * Restarting with watchdog (windowsapi)
+2025-06-14 06:28:15,768 INFO:  * Restarting with watchdog (windowsapi)
+2025-06-14 06:29:42,731 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-06-14 06:29:42,731 INFO: [33mPress CTRL+C to quit[0m
+2025-06-14 06:29:42,750 INFO:  * Restarting with watchdog (windowsapi)
+2025-06-14 06:29:44,364 WARNING:  * Debugger is active!
+2025-06-14 06:29:44,369 INFO:  * Debugger PIN: 847-420-897
+2025-06-14 06:31:23,456 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-06-14 06:31:23,457 INFO: [33mPress CTRL+C to quit[0m
+2025-06-14 06:31:23,487 INFO:  * Restarting with watchdog (windowsapi)
+2025-06-14 06:31:25,490 WARNING:  * Debugger is active!
+2025-06-14 06:31:25,498 INFO:  * Debugger PIN: 847-420-897
