@@ -98,7 +98,7 @@ FOOTER_TEMPLATE = """
             <p>Contact us: <a href="mailto:info@healthtotech.org" class="underline">info@healthtotech.org</a></p>
             <p>Copyright © Health to Tech</p>
             <p class="mt-2 text-red-400">
-                🚫 {{ 'This service does not replace healthcare providers'}}
+                🚫 {{ 'This service does not replace healthcare providers or counselors'}}
             </p>
         </div>
     </footer>
