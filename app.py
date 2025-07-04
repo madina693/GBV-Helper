@@ -97,6 +97,9 @@ FOOTER_TEMPLATE = """
         <div class="container mx-auto text-center">
             <p>Contact us: <a href="mailto:info@healthtotech.org" class="underline">info@healthtotech.org</a></p>
             <p>Copyright © Health to Tech</p>
+            <p class="mt-2 text-red-400">
+                🚫 {{ 'This service does not replace healthcare providers'}}
+            </p>
         </div>
     </footer>
 </body>
@@ -111,9 +114,9 @@ ABOUT_TEMPLATE = """
             <h1 class="text-3xl font-bold mb-4">{{ 'About Us' if language == 'en' else 'Kuhusu Sisi' }}</h1>
             <p class="mb-4">
                 {{ 
-                    'At Health to Tech, we are committed to eradicating Gender-Based Violence (GBV) by leveraging cutting-edge technology. Our mission is to empower youth aged 13–35 in Tanzania with anonymous, accessible tools to assess their GBV risk and connect with vital support services. Through partnerships with local organizations, we provide timely legal aid, counseling, and psychosocial support to survivors, fostering safer communities.'
+                    'At Health to Tech, we are committed to eradicating Gender-Based Violence (GBV) by leveraging cutting-edge technology. Our mission is to empower youth aged 13–35 in Tanzania with anonymous, accessible tools to assess their GBV risk and connect with vital support services. Through online direct link with local organizations, for legal aid, counseling, and psychosocial support to survivors, fostering safer communities.'
                     if language == 'en' else 
-                    'Kwa Health to Tech, tumejitolea kumudu Ukatili wa Kijinsia (GBV) kwa kutumia teknolojia ya hali ya juu. Dhamira yetu ni kuwezesha vijana wa miaka 13–35 nchini Tanzania kwa zana zisizojulikana na zinazopatikana kwa urahisi ili kutathmini hatari zao za GBV na kuungana na huduma za msaada muhimu. Kupitia ushirikiano na mashirika ya ndani, tunatoa msaada wa kisheria wa wakati, ushauri nasaha, na msaada wa kisaikolojia kwa waathirika, tukichangia kujenga jamii salama.'
+                    'Kwa Health to Tech, Katika Health to Tech, tumejikita katika kutokomeza ukatili wa kijinsia (GBV) kwa kutumia teknolojia ya kisasa. Lengo letu ni kuwawezesha vijana wenye umri wa miaka 13 hadi 35 hapa Tanzania kutumia zana rafiki na za faragha kutathmini hatari ya ukatili wa kijinsia na kuunganishwa moja kwa moja na huduma muhimu za msaada. Kupitia mtandao, tunawaunganisha na mashirika ya ndani yanayotoa msaada wa kisheria, ushauri wa kisaikolojia, na huduma za afya ya akili kwa waathirika, ili kujenga jamii salama zaidi.'
                 }}
             </p>
             <h2 class="text-2xl font-semibold mb-4">{{ 'What We Do' if language == 'en' else 'Tunachofanya' }}</h2>
@@ -211,7 +214,7 @@ ADMIN_TEMPLATE = """
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                 <div>
                     <h2 class="text-xl font-semibold mb-4">{{ 'Assessments by Age Range and Gender' if language == 'en' else 'Tathmini kwa Rangi ya Umri na Jinsia' }}</h2>
-                    <canvas id="ageGenderChart" class="w-full h-64"></canvas>
+                    <canvas id="ageGenderChart" class="w-full h-[52px]"></canvas>
                 </div>
                 <div>
                     <h2 class="text-xl font-semibold mb-4">{{ 'GBV Risk vs No Risk (Percentage)' if language == 'en' else 'Hatari ya GBV dhidi ya Hakuna Hatari (Asilimia)' }}</h2>
