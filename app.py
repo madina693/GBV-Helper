@@ -450,7 +450,7 @@ def assessment():
                                 </ul>
                             </div>
                             {% endif %}
-                            <p class="mb-4">{{ 'Chat with our chatbot to learn more about GBV anonymously.' if language == 'en' else 'Ongea na chatbot yetu kujifunza zaidi kuhusu GBV bila kujulikana.' }}</p>
+                           <p class="mb-4">{{ 'Chat with our chatbot to learn more about GBV anonymously at right side bottom 💬.' if language == 'en' else 'Ongea na chatbot yetu kujifunza zaidi kuhusu GBV bila kujulikana upande wa kulia chini💬.' }}</p>
                             <a href="/assessment" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">{{ 'Start Over' if language == 'en' else 'Anza Tena' }}</a>
                         </div>
                     </div>
