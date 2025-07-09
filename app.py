@@ -220,18 +220,26 @@ ADMIN_TEMPLATE = """
 <main class="flex-grow">
     <div class="container mx-auto p-6 sm:p-8">
         <div class="bg-white shadow-md rounded-lg p-6 sm:p-8">
-            <h1 class="text-2xl sm:text-3xl font-bold mb-4">{{ 'GBV Assessment Admin Dashboard' if language == 'en' else 'Dashibodi ya Msimamizi wa Tathmini ya GBV' }}</h1>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
-                <div>
-                    <h2 class="text-lg sm:text-xl font-semibold mb-4">{{ 'Assessments by Age Range and Gender' if language == 'en' else 'Tathmini kwa Rangi ya Umri na Jinsia' }}</h2>
-                    <canvas id="ageGenderChart" class="w-full h-48 sm:h-64"></canvas>
+            <h1 class="text-2xl sm:text-3xl font-bold mb-6">{{ 'GBV Assessment Admin Dashboard' if language == 'en' else 'Dashibodi ya Msimamizi wa Tathmini ya GBV' }}</h1>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <div class="bg-white p-4 rounded-lg shadow-md border border-gray-200 max-w-md mx-auto">
+                    <h2 class="text-lg sm:text-xl font-semibold mb-4 text-center">{{ 'Assessments by Age Range and Gender' if language == 'en' else 'Tathmini kwa Rangi ya Umri na Jinsia' }}</h2>
+                    <canvas id="ageGenderChart" class="w-full h-72 md:h-80 max-h-80"></canvas>
+                    {% if not assessments %}
+                    <p class="text-center text-gray-500 text-sm mt-2">{{ 'No data available for charts.' if language == 'en' else 'Hakuna data inapatikana kwa chati.' }}</p>
+                    {% endif %}
                 </div>
-                <div>
-                    <h2 class="text-lg sm:text-xl font-semibold mb-4">{{ 'GBV Risk vs No Risk (Percentage)' if language == 'en' else 'Hatari ya GBV dhidi ya Hakuna Hatari (Asilimia)' }}</h2>
-                    <canvas id="riskChart" class="w-full h-48 sm:h-64"></canvas>
+                <div class="bg-white p-4 rounded-lg shadow-md border border-gray-200 max-w-md mx-auto">
+                    <h2 class="text-lg sm:text-xl font-semibold mb-4 text-center">{{ 'GBV Risk vs No Risk (Percentage)' if language == 'en' else 'Hatari ya GBV dhidi ya Hakuna Hatari (Asilimia)' }}</h2>
+                    <canvas id="riskChart" class="w-full h-72 md:h-80 max-h-80"></canvas>
+                    {% if not assessments %}
+                    <p class="text-center text-gray-500 text-sm mt-2">{{ 'No data available for charts.' if language == 'en' else 'Hakuna data inapatikana kwa chati.' }}</p>
+                    {% endif %}
                 </div>
             </div>
-            <a href="/download_csv" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 inline-block mb-4 text-sm sm:text-base">{{ 'Download CSV Report' if language == 'en' else 'Pakua Ripoti ya CSV' }}</a>
+            <div class="text-center mb-6">
+                <a href="/download_csv" class="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 text-sm sm:text-base">{{ 'Download CSV Report' if language == 'en' else 'Pakua Ripoti ya CSV' }}</a>
+            </div>
             <div class="overflow-x-auto">
                 <table class="min-w-full bg-white border text-sm sm:text-base">
                     <thead>
@@ -299,10 +307,24 @@ ADMIN_TEMPLATE = """
             responsive: true,
             maintainAspectRatio: false,
             scales: {
-                y: { beginAtZero: true, title: { display: true, text: '{{ 'Number of Assessments' if language == 'en' else 'Idadi ya Tathmini' }}' } },
-                x: { title: { display: true, text: '{{ 'Age Range' if language == 'en' else 'Rangi ya Umri' }}' } }
+                y: {
+                    beginAtZero: true,
+                    title: { display: true, text: '{{ 'Number of Assessments' if language == 'en' else 'Idadi ya Tathmini' }}', font: { size: 14 } },
+                    ticks: { font: { size: 12 } },
+                    grid: { color: 'rgba(0, 0, 0, 0.1)' }
+                },
+                x: {
+                    title: { display: true, text: '{{ 'Age Range' if language == 'en' else 'Rangi ya Umri' }}', font: { size: 14 } },
+                    ticks: { font: { size: 12 } }
+                }
             },
-            plugins: { legend: { display: true } }
+            plugins: {
+                legend: {
+                    display: true,
+                    position: 'top',
+                    labels: { font: { size: 11 }, padding: 20 }
+                }
+            }
         }
     });
 
@@ -321,7 +343,17 @@ ADMIN_TEMPLATE = """
         options: {
             responsive: true,
             maintainAspectRatio: false,
-            plugins: { legend: { display: true } }
+            plugins: {
+                legend: {
+                    display: true,
+                    position: 'top',
+                    labels: { font: { size: 11 }, padding: 20 }
+                },
+                tooltip: {
+                    bodyFont: { size: 12 },
+                    titleFont: { size: 14 }
+                }
+            }
         }
     });
 </script>
@@ -451,7 +483,7 @@ def assessment():
                             <div class="mb-6">
                                 <p class="font-medium text-sm sm:text-base">{{ 'Do you agree to get legal and support organizations for GBV support?' if language == 'en' else 'Je, unakubali kupata mashirika ya kisheria na msaada kwa msaada wa GBV?' }}</p>
                                 <div class="space-x-4 mt-2 flex flex-wrap gap-2">
-                                    <a href="/update_support/yes/{{ language }}" class="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 text-sm sm:text-base">{{ 'Agree to Support' if language == 'en' else 'Kubali Msaada' }}</a>
+                                    <a href="/update_support/yes/{{ language }}" class="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 text-sm sm:text-base">{{ ' Agree to Support' if language == 'en' else 'Kubali Msaada' }}</a>
                                     <a href="/update_support/no/{{ language }}" class="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 text-sm sm:text-base">{{ 'Do Not Agree to Support' if language == 'en' else 'Sikubali Msaada' }}</a>
                                 </div>
                             </div>
