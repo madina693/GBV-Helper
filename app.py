@@ -68,24 +68,149 @@ NAVBAR_TEMPLATE = """
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+        .container {
+            padding: 1rem;
+        }
+        @media (min-width: 640px) {
+            .container {
+                padding: 1.5rem;
+            }
+        }
+        @media (min-width: 1024px) {
+            .container {
+                padding: 2rem;
+            }
+        }
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background-color: #2563eb;
+        }
+        .navbar-brand {
+            font-size: 1.25rem;
+        }
+        .navbar-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        @media (min-width: 640px) {
+            .navbar-brand {
+                font-size: 1.5rem;
+            }
+            .navbar-menu {
+                flex-direction: row;
+                gap: 1rem;
+            }
+        }
+        @media (min-width: 1024px) {
+            .navbar-brand {
+                font-size: 1.75rem;
+            }
+        }
+        .form-input {
+            padding: 0.5rem;
+            font-size: 0.875rem;
+            line-height: 1.25rem;
+            width: 100%;
+            border-radius: 0.375rem;
+            border: 1px solid #d1d5db;
+        }
+        .form-button {
+            padding: 0.5rem 1rem;
+            font-size: 0.875rem;
+            border-radius: 0.375rem;
+        }
+        .chart-container {
+            max-width: 100%;
+            height: auto;
+            margin: 0 auto;
+        }
+        canvas {
+            max-height: 300px !important;
+            width: 100% !important;
+        }
+        /* Font size ranges for different devices */
+        .text-sm {
+            font-size: 0.875rem; /* Mobile */
+        }
+        .text-base {
+            font-size: 1rem; /* Mobile */
+        }
+        .text-lg {
+            font-size: 1.125rem; /* Mobile */
+        }
+        .text-xl {
+            font-size: 1.25rem; /* Mobile */
+        }
+        .text-2xl {
+            font-size: 1.5rem; /* Mobile */
+        }
+        .text-3xl {
+            font-size: 1.875rem; /* Mobile */
+        }
+        @media (min-width: 640px) {
+            .text-sm {
+                font-size: 0.9375rem; /* Tablet */
+            }
+            .text-base {
+                font-size: 1.125rem; /* Tablet */
+            }
+            .text-lg {
+                font-size: 1.25rem; /* Tablet */
+            }
+            .text-xl {
+                font-size: 1.5rem; /* Tablet */
+            }
+            .text-2xl {
+                font-size: 1.75rem; /* Tablet */
+            }
+            .text-3xl {
+                font-size: 2.25rem; /* Tablet */
+            }
+        }
+        @media (min-width: 1024px) {
+            .text-sm {
+                font-size: 1rem; /* Desktop */
+            }
+            .text-base {
+                font-size: 1.25rem; /* Desktop */
+            }
+            .text-lg {
+                font-size: 1.5rem; /* Desktop */
+            }
+            .text-xl {
+                font-size: 1.75rem; /* Desktop */
+            }
+            .text-2xl {
+                font-size: 2rem; /* Desktop */
+            }
+            .text-3xl {
+                font-size: 2.5rem; /* Desktop */
+            }
+        }
         @media (max-width: 640px) {
-            .container { padding: 1rem; }
-            .text-3xl { font-size: 1.5rem; }
-            .text-2xl { font-size: 1.25rem; }
-            .text-xl { font-size: 1.1rem; }
-            .p-8 { padding: 1.5rem; }
-            .p-20 { padding: 1rem; }
-            .max-w-2xl { max-width: 100%; }
+            .p-8 { padding: 1rem; }
+            .p-6 { padding: 0.75rem; }
+            .max-w-4xl { max-width: 100%; }
+            .grid-cols-3 { grid-template-columns: 1fr; }
+            .grid-cols-2 { grid-template-columns: 1fr; }
+            .space-x-4 > * + * { margin-left: 0; margin-top: 0.5rem; }
             .flex-row { flex-direction: column; }
-            .space-x-4 > * + * { margin-top: 1rem; margin-left: 0; }
+            .table { font-size: 0.75rem; }
+            .table th, .table td { padding: 0.5rem; }
         }
     </style>
 </head>
-<body class="bg-gray-100 font-sans flex flex-col min-h-screen">
-    <nav class="bg-blue-600 text-white p-4 fixed w-full top-0 z-10">
+<body class="bg-gray-100 flex flex-col min-h-screen">
+    <nav class="navbar text-white p-4">
         <div class="container mx-auto flex flex-col sm:flex-row justify-between items-center">
-            <a href="/about" class="text-2xl font-bold mb-2 sm:mb-0">GBV Helper</a>
-            <div class="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-4">
+            <a href="/about" class="navbar-brand mb-2 sm:mb-0">GBV Helper</a>
+            <div class="navbar-menu sm:flex-row items-center">
                 <div class="relative">
                     <form method="POST" action="/set_language">
                         <select name="language" onchange="this.form.submit()" class="bg-blue-500 text-white border border-white rounded-md px-2 py-1 focus:outline-none text-sm w-full sm:w-auto">
@@ -104,7 +229,7 @@ NAVBAR_TEMPLATE = """
 
 FOOTER_TEMPLATE = """
     <footer class="bg-gray-800 text-white p-4 mt-auto">
-        <div class="container mx-auto text-center text-sm sm:text-base">
+        <div class="container mx-auto text-center text-sm">
             <p>Contact us: <a href="mailto:info@healthtotech.org" class="underline">info@healthtotech.org</a></p>
             <p>Copyright © Health to Tech</p>
             <p class="mt-2 text-red-400">
@@ -119,46 +244,46 @@ FOOTER_TEMPLATE = """
 ABOUT_TEMPLATE = """
 {{ navbar | safe }}
 <main class="flex-grow">
-    <div class="container mx-auto p-6 sm:p-8">
-        <div class="bg-white shadow-md rounded-lg p-6 sm:p-8 max-w-4xl mx-auto">
-            <h1 class="text-2xl sm:text-3xl font-bold mb-4">{{ 'About Us' if language == 'en' else 'Kuhusu Sisi' }}</h1>
-            <p class="mb-4 text-sm sm:text-base">
+    <div class="container mx-auto p-6">
+        <div class="bg-white shadow-md rounded-lg p-6 max-w-4xl mx-auto">
+            <h1 class="text-2xl font-bold mb-4">{{ 'About Us' if language == 'en' else 'Kuhusu Sisi' }}</h1>
+            <p class="mb-4 text-base">
                 {{ 
                     'At Health to Tech, we are committed to eradicating Gender-Based Violence (GBV) by leveraging cutting-edge technology. Our mission is to empower youth aged 13–35 in Tanzania with anonymous, accessible tools to assess their GBV risk and connect with vital support services. Through online direct link with local organizations, for legal aid, counseling, and psychosocial support to survivors, fostering safer communities.'
                     if language == 'en' else 
-                    'Kwa Health to Tech, Katika Health to Tech, tumejikita katika kutokomeza ukatili wa kijinsia (GBV) kwa kutumia teknolojia ya kisasa. Lengo letu ni kuwawezesha vijana wenye umri wa miaka 13 hadi 35 hapa Tanzania kutumia zana rafiki na za faragha kutathmini hatari ya ukatili wa kijinsia na kuunganishwa moja kwa moja na huduma muhimu za msaada. Kupitia mtandao, tunawaunganisha na mashirika ya ndani yanayotoa msaada wa kisheria, ushauri wa kisaikolojia, na huduma za afya ya akili kwa waathirika, ili kujenga jamii salama zaidi.'
+                    'Kwa Health to Tech, tumejikita katika kutokomeza ukatili wa kijinsia (GBV) kwa kutumia teknolojia ya kisasa. Lengo letu ni kuwawezesha vijana wenye umri wa miaka 13 hadi 35 hapa Tanzania kutumia zana rafiki na za faragha kutathmini hatari ya ukatili wa kijinsia na kuunganishwa moja kwa moja na huduma muhimu za msaada. Kupitia mtandao, tunawaunganisha na mashirika ya ndani yanayotoa msaada wa kisheria, ushauri wa kisaikolojia, na huduma za afya ya akili kwa waathirika, ili kujenga jamii salama zaidi.'
                 }}
             </p>
-            <h2 class="text-xl sm:text-2xl font-semibold mb-4">{{ 'What We Do' if language == 'en' else 'Tunachofanya' }}</h2>
-            <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 mb-6">
-                <div class="bg-white text-blue-600 p-4 rounded-md shadow-md flex-1 text-center border border-gray-200">
-                    <h3 class="font-semibold text-sm sm:text-base">{{ 'Assess Participants' if language == 'en' else 'Tathmini Washiriki' }}</h3>
-                    <p class="text-sm sm:text-base">{{ 
+            <h2 class="text-xl font-semibold mb-4">{{ 'What We Do' if language == 'en' else 'Tunachofanya' }}</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+                <div class="bg-white text-blue-600 p-4 rounded-md shadow-md border border-gray-200 text-center">
+                    <h3 class="font-semibold text-base">{{ 'Assess Participants' if language == 'en' else 'Tathmini Washiriki' }}</h3>
+                    <p class="text-sm">{{ 
                         'Our assessment tool helps identify GBV risks through a confidential questionnaire tailored for youth aged 13–35, enabling targeted interventions.' 
                         if language == 'en' else 
                         'Zana yetu ya tathmini husaidia kubainisha hatari za GBV kupitia dodoso la siri lililobuniwa kwa vijana wa miaka 13–35, likiwezesha afua za kulengwa.'
                     }}</p>
                 </div>
-                <div class="bg-white text-blue-600 p-4 rounded-md shadow-md flex-1 text-center border border-gray-200">
-                    <h3 class="font-semibold text-sm sm:text-base">{{ 'Provide Support' if language == 'en' else 'Toa Msaada' }}</h3>
-                    <p class="text-sm sm:text-base">{{ 
+                <div class="bg-white text-blue-600 p-4 rounded-md shadow-md border border-gray-200 text-center">
+                    <h3 class="font-semibold text-base">{{ 'Provide Support' if language == 'en' else 'Toa Msaada' }}</h3>
+                    <p class="text-sm">{{ 
                         'We connect survivors to trusted local organizations offering legal aid and counseling to address GBV effectively.' 
                         if language == 'en' else 
                         'Tunawaunganisha waathirika na mashirika ya ndani ya kuaminika yanayotoa msaada wa kisheria na ushauri nasaha ili kushughulikia GBV kwa ufanisi.'
                     }}</p>
                 </div>
-                <div class="bg-white text-blue-600 p-4 rounded-md shadow-md flex-1 text-center border border-gray-200">
-                    <h3 class="font-semibold text-sm sm:text-base">{{ 'Anonymous Chatbot' if language == 'en' else 'Chatbot Isiyojulikana' }}</h3>
-                    <p class="text-sm sm:text-base">{{ 
+                <div class="bg-white text-blue-600 p-4 rounded-md shadow-md border border-gray-200 text-center">
+                    <h3 class="font-semibold text-base">{{ 'Anonymous Chatbot' if language == 'en' else 'Chatbot Isiyojulikana' }}</h3>
+                    <p class="text-sm">{{ 
                         'Our anonymous chatbot provides a safe space to learn about GBV, offering guidance and raising awareness.' 
                         if language == 'en' else 
                         'Chatbot yetu isiyojulikana hutoa nafasi salama ya kujifunza kuhusu GBV, ikitoa mwongozo na kuongeza uelewa.'
                     }}</p>
                 </div>
             </div>
-            <a href="/assessment" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 inline-flex items-center text-sm sm:text-base">
+            <a href="/assessment" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 inline-flex items-center text-base">
                 {{ 'Take the Assessment' if language == 'en' else 'Fanya Tathmini' }}
-                <svg class="w-4 sm:w-5 h-4 sm:h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                 </svg>
             </a>
@@ -171,32 +296,32 @@ ABOUT_TEMPLATE = """
 FORM_TEMPLATE = """
 {{ navbar | safe }}
 <main class="flex-grow">
-    <div class="container mx-auto p-6 sm:p-8 lg:p-12">
-        <div class="bg-white shadow-md rounded-lg p-6 sm:p-8 max-w-4xl mx-auto">
-            <h1 class="text-2xl sm:text-3xl font-bold mb-4">{{ 'GBV Risk Assessment Form' if language == 'en' else 'Fomu ya Tathmini ya Hatari ya GBV' }}</h1>
+    <div class="container mx-auto p-6">
+        <div class="bg-white shadow-md rounded-lg p-6 max-w-4xl mx-auto">
+            <h1 class="text-2xl font-bold mb-4">{{ 'GBV Risk Assessment Form' if language == 'en' else 'Fomu ya Tathmini ya Hatari ya GBV' }}</h1>
             <form method="POST" class="space-y-4">
                 {% if not show_questions %}
                 <div>
-                    <label for="age" class="block text-sm sm:text-base font-medium text-gray-700">{{ 'Age' if language == 'en' else 'Umri' }}</label>
-                    <input type="number" name="age" id="age" value="{{ age }}" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm text-sm sm:text-base" required>
+                    <label for="age" class="block text-base font-medium text-gray-700">{{ 'Age' if language == 'en' else 'Umri' }}</label>
+                    <input type="number" name="age" id="age" value="{{ age }}" class="form-input mt-1" required>
                 </div>
                 <div>
-                    <label for="gender" class="block text-sm sm:text-base font-medium text-gray-700">{{ 'Gender' if language == 'en' else 'Jinsia' }}</label>
-                    <select name="gender" id="gender" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm text-sm sm:text-base" required>
+                    <label for="gender" class="block text-base font-medium text-gray-700">{{ 'Gender' if language == 'en' else 'Jinsia' }}</label>
+                    <select name="gender" id="gender" class="form-input mt-1" required>
                         <option value="" {{ 'selected' if not gender else '' }}>{{ 'Select Gender' if language == 'en' else 'Chagua Jinsia' }}</option>
                         <option value="Male" {{ 'selected' if gender == 'Male' else '' }}>{{ 'Male' if language == 'en' else 'Mwanaume' }}</option>
                         <option value="Female" {{ 'selected' if gender == 'Female' else '' }}>{{ 'Female' if language == 'en' else 'Mwanamke' }}</option>
                     </select>
                 </div>
                 {% if error %}
-                <p class="text-red-500 text-sm sm:text-base">{{ error }}</p>
+                <p class="text-red-500 text-sm">{{ error }}</p>
                 {% endif %}
-                <button type="submit" name="submit_initial" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 text-sm sm:text-base">{{ 'Continue' if language == 'en' else 'Endelea' }}</button>
+                <button type="submit" name="submit_initial" class="form-button bg-blue-600 text-white hover:bg-blue-700">{{ 'Continue' if language == 'en' else 'Endelea' }}</button>
                 {% else %}
                 {% for i, question in questions %}
                 <div class="border-b pb-4">
-                    <p class="font-medium text-sm sm:text-base">{{ i + 1 }}. {{ question }}</p>
-                    <div class="mt-2 space-x-4 flex flex-wrap gap-2">
+                    <p class="font-medium text-base">{{ i + 1 }}. {{ question }}</p>
+                    <div class="mt-2 flex flex-wrap gap-4">
                         <label class="flex items-center"><input type="radio" name="q{{ i }}" value="yes" required class="mr-1"> {{ 'Yes' if language == 'en' else 'Ndiyo' }}</label>
                         <label class="flex items-center"><input type="radio" name="q{{ i }}" value="no" required class="mr-1"> {{ 'No' if language == 'en' else 'Hapana' }}</label>
                     </div>
@@ -204,9 +329,9 @@ FORM_TEMPLATE = """
                 {% endfor %}
                 <input type="hidden" name="current_language" value="{{ language }}">
                 {% if error %}
-                <p class="text-red-500 text-sm sm:text-base">{{ error }}</p>
+                <p class="text-red-500 text-sm">{{ error }}</p>
                 {% endif %}
-                <button type="submit" name="submit_questions" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 text-sm sm:text-base">{{ 'Submit' if language == 'en' else 'Wasilisha' }}</button>
+                <button type="submit" name="submit_questions" class="form-button bg-blue-600 text-white hover:bg-blue-700">{{ 'Submit' if language == 'en' else 'Wasilisha' }}</button>
                 {% endif %}
             </form>
         </div>
@@ -218,30 +343,30 @@ FORM_TEMPLATE = """
 ADMIN_TEMPLATE = """
 {{ navbar | safe }}
 <main class="flex-grow">
-    <div class="container mx-auto p-6 sm:p-8">
-        <div class="bg-white shadow-md rounded-lg p-6 sm:p-8">
-            <h1 class="text-2xl sm:text-3xl font-bold mb-6">{{ 'GBV Assessment Admin Dashboard' if language == 'en' else 'Dashibodi ya Msimamizi wa Tathmini ya GBV' }}</h1>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                <div class="bg-white p-4 rounded-lg shadow-md border border-gray-200 max-w-md mx-auto">
-                    <h2 class="text-lg sm:text-xl font-semibold mb-4 text-center">{{ 'Assessments by Age Range and Gender' if language == 'en' else 'Tathmini kwa Rangi ya Umri na Jinsia' }}</h2>
-                    <canvas id="ageGenderChart" class="w-full h-72 md:h-80 max-h-80"></canvas>
+    <div class="container mx-auto p-6">
+        <div class="bg-white shadow-md rounded-lg p-6">
+            <h1 class="text-2xl font-bold mb-6">{{ 'GBV Assessment Admin Dashboard' if language == 'en' else 'Dashibodi ya Msimamizi wa Tathmini ya GBV' }}</h1>
+            <div class="grid grid-cols-1 gap-6 mb-8">
+                <div class="chart-container bg-white p-4 rounded-lg shadow-md border border-gray-200">
+                    <h2 class="text-lg font-semibold mb-4 text-center">{{ 'Assessments by Age Range and Gender' if language == 'en' else 'Tathmini kwa Rangi ya Umri na Jinsia' }}</h2>
+                    <canvas id="ageGenderChart"></canvas>
                     {% if not assessments %}
                     <p class="text-center text-gray-500 text-sm mt-2">{{ 'No data available for charts.' if language == 'en' else 'Hakuna data inapatikana kwa chati.' }}</p>
                     {% endif %}
                 </div>
-                <div class="bg-white p-4 rounded-lg shadow-md border border-gray-200 max-w-md mx-auto">
-                    <h2 class="text-lg sm:text-xl font-semibold mb-4 text-center">{{ 'GBV Risk vs No Risk (Percentage)' if language == 'en' else 'Hatari ya GBV dhidi ya Hakuna Hatari (Asilimia)' }}</h2>
-                    <canvas id="riskChart" class="w-full h-72 md:h-80 max-h-80"></canvas>
+                <div class="chart-container bg-white p-4 rounded-lg shadow-md border border-gray-200">
+                    <h2 class="text-lg font-semibold mb-4 text-center">{{ 'GBV Risk vs No Risk (Percentage)' if language == 'en' else 'Hatari ya GBV dhidi ya Hakuna Hatari (Asilimia)' }}</h2>
+                    <canvas id="riskChart"></canvas>
                     {% if not assessments %}
                     <p class="text-center text-gray-500 text-sm mt-2">{{ 'No data available for charts.' if language == 'en' else 'Hakuna data inapatikana kwa chati.' }}</p>
                     {% endif %}
                 </div>
             </div>
             <div class="text-center mb-6">
-                <a href="/download_csv" class="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 text-sm sm:text-base">{{ 'Download CSV Report' if language == 'en' else 'Pakua Ripoti ya CSV' }}</a>
+                <a href="/download_csv" class="form-button bg-blue-600 text-white hover:bg-blue-700">{{ 'Download CSV Report' if language == 'en' else 'Pakua Ripoti ya CSV' }}</a>
             </div>
             <div class="overflow-x-auto">
-                <table class="min-w-full bg-white border text-sm sm:text-base">
+                <table class="table min-w-full bg-white border text-sm">
                     <thead>
                         <tr class="bg-gray-200">
                             <th class="py-2 px-4 border">{{ 'ID' if language == 'en' else 'Kitambulisho' }}</th>
@@ -309,20 +434,20 @@ ADMIN_TEMPLATE = """
             scales: {
                 y: {
                     beginAtZero: true,
-                    title: { display: true, text: '{{ 'Number of Assessments' if language == 'en' else 'Idadi ya Tathmini' }}', font: { size: 14 } },
-                    ticks: { font: { size: 12 } },
+                    title: { display: true, text: '{{ 'Number of Assessments' if language == 'en' else 'Idadi ya Tathmini' }}', font: { size: 12 } },
+                    ticks: { font: { size: 10 } },
                     grid: { color: 'rgba(0, 0, 0, 0.1)' }
                 },
                 x: {
-                    title: { display: true, text: '{{ 'Age Range' if language == 'en' else 'Rangi ya Umri' }}', font: { size: 14 } },
-                    ticks: { font: { size: 12 } }
+                    title: { display: true, text: '{{ 'Age Range' if language == 'en' else 'Rangi ya Umri' }}', font: { size: 12 } },
+                    ticks: { font: { size: 10 } }
                 }
             },
             plugins: {
                 legend: {
                     display: true,
                     position: 'top',
-                    labels: { font: { size: 11 }, padding: 20 }
+                    labels: { font: { size: 10 }, padding: 10 }
                 }
             }
         }
@@ -347,11 +472,11 @@ ADMIN_TEMPLATE = """
                 legend: {
                     display: true,
                     position: 'top',
-                    labels: { font: { size: 11 }, padding: 20 }
+                    labels: { font: { size: 10 }, padding: 10 }
                 },
                 tooltip: {
-                    bodyFont: { size: 12 },
-                    titleFont: { size: 14 }
+                    bodyFont: { size: 10 },
+                    titleFont: { size: 12 }
                 }
             }
         }
@@ -363,25 +488,25 @@ ADMIN_TEMPLATE = """
 SUPPORT_TEMPLATE = """
 {{ navbar | safe }}
 <main class="flex-grow">
-    <div class="container mx-auto p-6 sm:p-8">
-        <div class="bg-white shadow-md rounded-lg p-6 sm:p-8 max-w-4xl mx-auto">
-            <h1 class="text-2xl sm:text-3xl font-bold mb-4">{{ 'Support for GBV Survivors' if language == 'en' else 'Msaada kwa Waathirika wa GBV' }}</h1>
+    <div class="container mx-auto p-6">
+        <div class="bg-white shadow-md rounded-lg p-6 max-w-4xl mx-auto">
+            <h1 class="text-2xl font-bold mb-4">{{ 'Support for GBV Survivors' if language == 'en' else 'Msaada kwa Waathirika wa GBV' }}</h1>
             <div class="mb-6">
-                <h2 class="text-lg sm:text-xl font-semibold mb-2">{{ 'Legal Support for GBV Survivors' if language == 'en' else 'Msaada wa Kisheria kwa Waathirika wa GBV' }}</h2>
-                <ul class="list-disc pl-5 text-sm sm:text-base">
+                <h2 class="text-lg font-semibold mb-2">{{ 'Legal Support for GBV Survivors' if language == 'en' else 'Msaada wa Kisheria kwa Waathirika wa GBV' }}</h2>
+                <ul class="list-disc pl-5 text-base">
                     <li><a href="https://tawla.or.tz" target="_blank" class="underline">{{ 'Tanzania Women Lawyers Association (TAWLA)' if language == 'en' else 'Chama cha Wanasheria Wanawake Tanzania (TAWLA)' }}</a> - {{ 'Legal aid for women' if language == 'en' else 'Msaada wa kisheria kwa wanawake' }}</li>
                     <li><a href="https://www.lhrc.or.tz" target="_blank" class="underline">{{ 'Legal and Human Rights Centre (LHRC)' if language == 'en' else 'Kituo cha Sheria na Haki za Binadamu (LHRC)' }}</a> - {{ 'Legal assistance and advocacy' if language == 'en' else 'Msaada wa kisheria na utetezi' }}</li>
                 </ul>
             </div>
             <div class="mb-6">
-                <h2 class="text-lg sm:text-xl font-semibold mb-2">{{ 'Counselling Support for GBV Survivors' if language == 'en' else 'Msaada wa Ushauri Nasaha kwa Waathirika wa GBV' }}</h2>
-                <ul class="list-disc pl-5 text-sm sm:text-base">
+                <h2 class="text-lg font-semibold mb-2">{{ 'Counselling Support for GBV Survivors' if language == 'en' else 'Msaada wa Ushauri Nasaha kwa Waathirika wa GBV' }}</h2>
+                <ul class="list-disc pl-5 text-base">
                     <li><a href="https://www.tanzania.go.tz" target="_blank" class="underline">{{ 'National Child Helpline Tanzania' if language == 'en' else 'Simu ya Msaada ya Watoto Tanzania' }}</a> - {{ 'Support for GBV concerns' if language == 'en' else 'Msaada kwa masuala ya GBV' }}</li>
                     <li><a href="https://tamwa.org" target="_blank" class="underline">{{ 'Tanzania Media Women’s Association (TAMWA)' if language == 'en' else 'Chama cha Wanawake wa Vyombo vya Habari Tanzania (TAMWA)' }}</a> - {{ 'Psychosocial support' if language == 'en' else 'Msaada wa kisaikolojia' }}</li>
                     <li><a href="https://wildaftz.or.tz" target="_blank" class="underline">{{ 'Women in Law and Development in Africa (WiLDAF Tanzania)' if language == 'en' else 'Wanawake katika Sheria na Maendeleo Afrika (WiLDAF Tanzania)' }}</a> - {{ 'Legal support and GBV case referrals' if language == 'en' else 'Msaada wa kisheria na rufaa za kesi za GBV' }}</li>
                 </ul>
             </div>
-            <a href="/assessment" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 text-sm sm:text-base">{{ 'Back to Assessment' if language == 'en' else 'Rudi kwenye Tathmini' }}</a>
+            <a href="/assessment" class="form-button bg-blue-600 text-white hover:bg-blue-700">{{ 'Back to Assessment' if language == 'en' else 'Rudi kwenye Tathmini' }}</a>
         </div>
     </div>
     <script src="https://cdn.botpress.cloud/webchat/v3.0/inject.js"></script>
@@ -476,28 +601,28 @@ def assessment():
                 result_template = """
                 {{ navbar | safe }}
                 <main class="flex-grow">
-                    <div class="container mx-auto p-6 sm:p-8">
-                        <div class="bg-white shadow-md rounded-lg p-6 sm:p-8 max-w-4xl mx-auto">
-                            <h1 class="text-2xl sm:text-3xl font-bold mb-4">{{ 'Assessment Result' if language == 'en' else 'Matokeo ya Tathmini' }}</h1>
-                            <p class="text-lg sm:text-xl mb-4">{{ level }}</p>
+                    <div class="container mx-auto p-6">
+                        <div class="bg-white shadow-md rounded-lg p-6 max-w-4xl mx-auto">
+                            <h1 class="text-2xl font-bold mb-4">{{ 'Assessment Result' if language == 'en' else 'Matokeo ya Tathmini' }}</h1>
+                            <p class="text-lg mb-4">{{ level }}</p>
                             <div class="mb-6">
-                                <p class="font-medium text-sm sm:text-base">{{ 'Do you agree to get legal and support organizations for GBV support?' if language == 'en' else 'Je, unakubali kupata mashirika ya kisheria na msaada kwa msaada wa GBV?' }}</p>
-                                <div class="space-x-4 mt-2 flex flex-wrap gap-2">
-                                    <a href="/update_support/yes/{{ language }}" class="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 text-sm sm:text-base">{{ ' Agree to Support' if language == 'en' else 'Kubali Msaada' }}</a>
-                                    <a href="/update_support/no/{{ language }}" class="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 text-sm sm:text-base">{{ 'Do Not Agree to Support' if language == 'en' else 'Sikubali Msaada' }}</a>
+                                <p class="font-medium text-base">{{ 'Do you agree to get legal and support organizations for GBV support?' if language == 'en' else 'Je, unakubali kupata mashirika ya kisheria na msaada kwa msaada wa GBV?' }}</p>
+                                <div class="mt-2 flex flex-wrap gap-4">
+                                    <a href="/update_support/yes/{{ language }}" class="form-button bg-green-600 text-white hover:bg-green-700">{{ ' Agree to Support' if language == 'en' else 'Kubali Msaada' }}</a>
+                                    <a href="/update_support/no/{{ language }}" class="form-button bg-red-600 text-white hover:bg-red-700">{{ 'Do Not Agree to Support' if language == 'en' else 'Sikubali Msaada' }}</a>
                                 </div>
                             </div>
                             {% if support == 'yes' %}
                             <div class="mb-6">
-                                <p class="font-medium text-sm sm:text-base">{{ 'Support Options' if language == 'en' else 'Chaguzi za Msaada' }}</p>
-                                <ul class="list-disc pl-5 text-sm sm:text-base">
+                                <p class="font-medium text-base">{{ 'Support Options' if language == 'en' else 'Chaguzi za Msaada' }}</p>
+                                <ul class="list-disc pl-5 text-base">
                                     <li><a href="/support/{{ language }}" class="underline">{{ 'Legal Support for GBV Survivors' if language == 'en' else 'Msaada wa Kisheria kwa Waathirika wa GBV' }}</a></li>
                                     <li><a href="/support/{{ language }}" class="underline">{{ 'Counselling Support for GBV Survivors' if language == 'en' else 'Msaada wa Ushauri Nasaha kwa Waathirika wa GBV' }}</a></li>
                                 </ul>
                             </div>
                             {% endif %}
-                            <p class="mb-4 text-sm sm:text-base">{{ 'Chat with our chatbot to learn more about GBV anonymously at right side bottom 💬.' if language == 'en' else 'Ongea na chatbot yetu kujifunza zaidi kuhusu GBV bila kujulikana upande wa kulia chini💬.' }}</p>
-                            <a href="/assessment" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 text-sm sm:text-base">{{ 'Start Over' if language == 'en' else 'Anza Tena' }}</a>
+                            <p class="mb-4 text-base">{{ 'Chat with our chatbot to learn more about GBV anonymously at right side bottom 💬.' if language == 'en' else 'Ongea na chatbot yetu kujifunza zaidi kuhusu GBV bila kujulikana upande wa kulia chini💬.' }}</p>
+                            <a href="/assessment" class="form-button bg-blue-600 text-white hover:bg-blue-700">{{ 'Start Over' if language == 'en' else 'Anza Tena' }}</a>
                         </div>
                     </div>
                     <script src="https://cdn.botpress.cloud/webchat/v3.0/inject.js"></script>
@@ -559,16 +684,16 @@ def admin():
             return render_template_string("""
             {{ navbar | safe }}
             <main class="flex-grow">
-                <div class="container mx-auto p-6 sm:p-8">
-                    <div class="bg-white shadow-md rounded-lg p-6 sm:p-8 max-w-md mx-auto">
-                        <h1 class="text-2xl sm:text-3xl font-bold mb-4">{{ 'Admin Login' if language == 'en' else 'Ingia kama Msimamizi' }}</h1>
-                        <p class="text-red-500 mb-4 text-sm sm:text-base">{{ 'Invalid password' if language == 'en' else 'Nenosiri si Sahihi' }}</p>
+                <div class="container mx-auto p-6">
+                    <div class="bg-white shadow-md rounded-lg p-6 max-w-md mx-auto">
+                        <h1 class="text-2xl font-bold mb-4">{{ 'Admin Login' if language == 'en' else 'Ingia kama Msimamizi' }}</h1>
+                        <p class="text-red-500 mb-4 text-base">{{ 'Invalid password' if language == 'en' else 'Nenosiri si Sahihi' }}</p>
                         <form method="POST" class="space-y-4">
                             <div>
-                                <label for="password" class="block text-sm sm:text-base font-medium text-gray-700">{{ 'Password' if language == 'en' else 'Nenosiri' }}:</label>
-                                <input type="password" name="password" id="password" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm text-sm sm:text-base" required>
+                                <label for="password" class="block text-base font-medium text-gray-700">{{ 'Password' if language == 'en' else 'Nenosiri' }}:</label>
+                                <input type="password" name="password" id="password" class="form-input mt-1" required>
                             </div>
-                            <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 text-sm sm:text-base">{{ 'Login' if language == 'en' else 'Ingia' }}</button>
+                            <button type="submit" class="form-button bg-blue-600 text-white hover:bg-blue-700">{{ 'Login' if language == 'en' else 'Ingia' }}</button>
                         </form>
                     </div>
                 </div>
@@ -579,15 +704,15 @@ def admin():
     return render_template_string("""
     {{ navbar | safe }}
     <main class="flex-grow">
-        <div class="container mx-auto p-6 sm:p-8">
-            <div class="bg-white shadow-md rounded-lg p-6 sm:p-8 max-w-md mx-auto">
-                <h1 class="text-2xl sm:text-3xl font-bold mb-4">{{ 'Admin Login' if language == 'en' else 'Ingia kama Msimamizi' }}</h1>
+        <div class="container mx-auto p-6">
+            <div class="bg-white shadow-md rounded-lg p-6 max-w-md mx-auto">
+                <h1 class="text-2xl font-bold mb-4">{{ 'Admin Login' if language == 'en' else 'Ingia kama Msimamizi' }}</h1>
                 <form method="POST" class="space-y-4">
                     <div>
-                        <label for="password" class="block text-sm sm:text-base font-medium text-gray-700">{{ 'Password' if language == 'en' else 'Nenosiri' }}:</label>
-                        <input type="password" name="password" id="password" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm text-sm sm:text-base" required>
+                        <label for="password" class="block text-base font-medium text-gray-700">{{ 'Password' if language == 'en' else 'Nenosiri' }}:</label>
+                        <input type="password" name="password" id="password" class="form-input mt-1" required>
                     </div>
-                    <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 text-sm sm:text-base">{{ 'Login' if language == 'en' else 'Ingia' }}</button>
+                    <button type="submit" class="form-button bg-blue-600 text-white hover:bg-blue-700">{{ 'Login' if language == 'en' else 'Ingia' }}</button>
                 </form>
             </div>
         </div>
