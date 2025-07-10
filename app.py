@@ -81,7 +81,7 @@ NAVBAR_TEMPLATE = """
         }
         .container {
             max-width: 1200px;
-            padding: 1rem;
+            padding: 0.5rem;
             margin: 0 auto;
         }
         .navbar {
@@ -89,11 +89,12 @@ NAVBAR_TEMPLATE = """
             top: 0;
             z-index: 50;
             background: linear-gradient(to right, var(--primary), var(--secondary));
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
+            padding: 0.5rem 0;
         }
         .navbar-brand {
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             font-weight: 700;
             color: white;
             transition: color 0.2s ease;
@@ -104,13 +105,13 @@ NAVBAR_TEMPLATE = """
         .navbar-menu {
             display: flex;
             flex-direction: column;
-            gap: 0.75rem;
+            gap: 0.5rem;
         }
         .nav-link {
             color: white;
-            font-size: 1rem;
-            padding: 0.5rem 1rem;
-            border-radius: 0.375rem;
+            font-size: 0.875rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.25rem;
             transition: background-color 0.2s ease, transform 0.2s ease;
         }
         .nav-link:hover {
@@ -120,15 +121,15 @@ NAVBAR_TEMPLATE = """
         @media (min-width: 640px) {
             .navbar-menu {
                 flex-direction: row;
-                gap: 1.5rem;
+                gap: 1rem;
             }
             .navbar-brand {
-                font-size: 1.75rem;
+                font-size: 1.5rem;
             }
         }
         @media (min-width: 1024px) {
             .navbar-brand {
-                font-size: 2rem;
+                font-size: 1.75rem;
             }
         }
         .form-input {
@@ -183,7 +184,6 @@ NAVBAR_TEMPLATE = """
             transform: translateY(-5px);
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
         }
-        /* Responsive typography */
         .text-sm { font-size: 0.875rem; }
         .text-base { font-size: 1rem; }
         .text-lg { font-size: 1.125rem; }
@@ -242,13 +242,13 @@ NAVBAR_TEMPLATE = """
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body class="bg-gray-100 flex flex-col min-h-screen">
-    <nav class="navbar text-white p-4">
+    <nav class="navbar text-white">
         <div class="container flex flex-col sm:flex-row justify-between items-center">
-            <a href="/about" class="navbar-brand mb-2 sm:mb-0">GBV Helper</a>
+            <a href="/about" class="navbar-brand mb-1 sm:mb-0">GBV Helper</a>
             <div class="navbar-menu sm:flex-row items-center">
                 <div class="relative">
                     <form method="POST" action="/set_language">
-                        <select name="language" onchange="this.form.submit()" class="bg-transparent text-white border-2 border-white rounded-md px-3 py-1.5 focus:outline-none focus:ring-2 focus:ring-white/50 text-sm w-full sm:w-auto transition-all duration-200">
+                        <select name="language" onchange="this.form.submit()" class="bg-transparent text-white border-2 border-white rounded-md px-2 py-1 text-sm w-full sm:w-auto transition-all duration-200">
                             <option value="en" {{ 'selected' if language == 'en' else '' }} class="bg-white text-gray-800">English</option>
                             <option value="sw" {{ 'selected' if language == 'sw' else '' }} class="bg-white text-gray-800">Kiswahili</option>
                         </select>
@@ -259,15 +259,15 @@ NAVBAR_TEMPLATE = """
             </div>
         </div>
     </nav>
-    <div class="pt-16"></div>
+    <div class="pt-8"></div>
 """
 
 FOOTER_TEMPLATE = """
-    <footer class="bg-gray-900 text-white p-6 mt-auto">
-        <div class="container text-center space-y-3">
-            <p class="text-base">Contact us: <a href="mailto:info@healthtotech.org" class="underline hover:text-blue-300 transition-colors">info@healthtotech.org</a></p>
-            <p class="text-sm">Copyright © {{ '2025' }} Health to Tech</p>
-            <p class="text-red-400 text-sm font-medium">
+    <footer class="bg-gray-900 text-white mt-auto">
+        <div class="container text-center space-y-1 py-3">
+            <p class="text-sm">Contact us: <a href="mailto:info@healthtotech.org" class="underline hover:text-blue-300 transition-colors">info@healthtotech.org</a></p>
+            <p class="text-xs">Copyright © {{ '2025' }} Health to Tech</p>
+            <p class="text-red-400 text-xs font-medium">
                 🚫 {{ 'This service does not replace healthcare providers' if language == 'en' else 'Huduma hii haichukui nafasi ya watoa huduma za afya' }}
             </p>
         </div>
